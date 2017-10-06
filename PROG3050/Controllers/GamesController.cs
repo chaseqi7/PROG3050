@@ -22,7 +22,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
@@ -47,7 +47,7 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,EnglishName,EnglishDescription,EnglishDetail")] Game game)
+        public ActionResult Create([Bind(Include = "Guid,EnglishName,EnglishDescription,EnglishDetail")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -79,7 +79,7 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,EnglishName,EnglishDescription,EnglishDetail")] Game game)
+        public ActionResult Edit([Bind(Include = "Guid,EnglishName,EnglishDescription,EnglishDetail")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -108,7 +108,7 @@ namespace PROG3050.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             Game game = db.Games.Find(id);
             db.Games.Remove(game);

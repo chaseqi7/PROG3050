@@ -152,7 +152,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\GameContext.cs" />
+    <Compile Include="DAL\CVGSContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
