@@ -18,7 +18,7 @@ PRINT '>>> Creating Event Table';
 
 CREATE TABLE Event
 (
- EventiID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+ EventID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
  Name VarChar(200),
  Description Varchar(2000),
  StartDate Date,
