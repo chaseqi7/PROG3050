@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.banner{
+    font-size:24pt;
+    color: #187a65;
+}
+.navbar-nav a{
+    color: #187a65;
+}
+
+.login-prompt{
+    width: 500px;
+    margin:auto;
+}
+
+.btn, input{
+    margin-bottom: 5px;
+}
