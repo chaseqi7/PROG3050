@@ -8,10 +8,10 @@ using System.Web;
 
 namespace PROG3050.DAL
 {
-    public class GameContext : DbContext
+    public class CVGSContext : DbContext
     {
     
-        public GameContext() : base("CVGSContext")
+        public CVGSContext() : base("CVGSContext")
         {
         }
 

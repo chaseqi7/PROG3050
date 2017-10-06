@@ -13,7 +13,7 @@ namespace PROG3050.Controllers
 {
     public class GamesController : Controller
     {
-        private GameContext db = new GameContext();
+        private CVGSContext db = new CVGSContext();
 
         // GET: Games
         public ActionResult Index()
