@@ -11,6 +11,12 @@ namespace PROG3050.Models
         [Key]
         public Guid Guid { get; set; } 
         public string EnglishName { get; set; }
+        public string FrenchName { get; set; }
+        public string GameStatusCode { get; set; }
+        public int GameCategoryId { get; set; }
+        public Boolean FrenchVersion { get; set; }
+        public string EsrbRatingCode { get; set; }
+        public string UserName { get; set; }        
         public string EnglishDescription { get; set; }
         public string EnglishDetail { get; set; }
         

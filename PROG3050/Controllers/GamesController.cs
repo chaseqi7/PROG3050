@@ -14,6 +14,8 @@ namespace PROG3050.Controllers
     public class GamesController : Controller
     {
         private CVGSContext db = new CVGSContext();
+        Random r = new Random();
+        Guid g = new Guid();
 
         // GET: Games
         public ActionResult Index()
@@ -51,7 +53,24 @@ namespace PROG3050.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
+                Guid temp;
+                while (true)
+                {
+                    temp = Guid.NewGuid();
+                    if (db.Games.Find(temp) == null)
+                    {
+                        game.Guid = temp;
+                        break;
+                    }
+                }
+
+                game.UserName = "Unknown";
+                game.FrenchName = "fr";
+                game.FrenchVersion = false;
+                game.EsrbRatingCode = "E";
+                game.GameStatusCode = "A";
+                game.GameCategoryId = 1;
+;               db.Games.Add(game);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
