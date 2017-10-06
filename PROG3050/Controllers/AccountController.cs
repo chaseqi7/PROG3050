@@ -17,7 +17,6 @@ namespace PROG3050.Controllers
         public string click_Login()
         {
             return "Nice ... ";
-            // Wow
         }
     }
 }

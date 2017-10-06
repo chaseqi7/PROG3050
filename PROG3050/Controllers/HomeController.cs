@@ -23,7 +23,7 @@ namespace PROG3050.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            //Alex is gay
             return View();
         }
     }
