@@ -35,8 +35,10 @@ namespace PROG3050.Controllers
             {
                 return HttpNotFound();
             }
+            game.GameGenre = db.GameCategory.Find(game.GameCategoryId);
             return View(game);
         }
+
 
         // GET: Games/Create
         public ActionResult Create()
@@ -70,7 +72,7 @@ namespace PROG3050.Controllers
                 game.EsrbRatingCode = "E";
                 game.GameStatusCode = "A";
                 game.GameCategoryId = 1;
-;               db.Games.Add(game);
+                db.Games.Add(game);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -143,5 +145,6 @@ namespace PROG3050.Controllers
             }
             base.Dispose(disposing);
         }
+        
     }
 }

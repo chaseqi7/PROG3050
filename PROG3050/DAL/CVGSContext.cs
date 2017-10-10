@@ -17,7 +17,7 @@ namespace PROG3050.DAL
 
         public DbSet<Game> Games { get; set; }
         public DbSet<Event> Events { get; set; }
-
+        public DbSet<GameCategory> GameCategory { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

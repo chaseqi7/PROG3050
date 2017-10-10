@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
