@@ -22,5 +22,7 @@ namespace PROG3050.DAL
     {
         modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
     }
-}
+
+        public System.Data.Entity.DbSet<PROG3050.Models.Account> Accounts { get; set; }
+    }
 }
