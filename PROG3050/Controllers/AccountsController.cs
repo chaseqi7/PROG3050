@@ -15,14 +15,63 @@ namespace PROG3050.Controllers
     {
         private CVGSContext db = new CVGSContext();
 
-        public string click_Login()
+        [HttpPost]
+        public ActionResult try_Login(string username, string password)
         {
-            return "Nice ... ";
+            var cred_query = db.Accounts.Where(i => i.AccountName == username && i.UPassword == password);
+            if (cred_query.Count() != 0)
+            {
+                // Valid user! Save their junk!
+                Session["User"] = username;
+                Session["Usergroup"] = cred_query.First().UserType;
+                return RedirectToAction("Index", "Home");
+            }
+            TempData["UserMessage"] = "INVALID";
+            return RedirectToAction("Login");
+        }
+        public ActionResult click_SignUp()
+        {
+            return View("~/Views/Accounts/SignUp.cshtml");
+        }
+
+        // GET: Accounts/Create
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUp([Bind(Include = "UserID,AccountName,UserType,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        {
+            if (ModelState.IsValid)
+            {
+
+                account.UserType = "MEMBER";
+                account.Registered = DateTime.Now;
+                db.Accounts.Add(account);
+                db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+
+            return View(account);
         }
 
         public ActionResult Login()
         {
+            // Error Messages. A lil sloppy, but eh!
+            if ((string)TempData["UserMessage"] == "INVALID")
+                ViewBag.UserMessage = "Username or password is invalid.";
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Accounts
@@ -46,28 +95,6 @@ namespace PROG3050.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Accounts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,AccountName,UserType,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(account);
-        }
 
         // GET: Accounts/Edit/5
         public ActionResult Edit(int? id)

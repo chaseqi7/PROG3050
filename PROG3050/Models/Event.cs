@@ -15,7 +15,7 @@ namespace PROG3050.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Country { get; set; }
-        public string StateProvice { get; set; }
+        public string StateProvince { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
 

@@ -12,6 +12,10 @@
         <div class="container">
             <span class="banner">Conestoga Virtual Game Store <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></span>
             <br />
+            @if (Session["User"] != null){
+                <h4 class="pull-right text-success">Hello, @Session["User"]!</h4>
+                <div class="clearfix"></div>
+            }
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -25,9 +29,18 @@
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
                 </ul>
+                @if (Session["User"] == null)
+                {
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Login / Sign up", "Login", "Accounts")</li>
                 </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Sign Out", "Logout", "Accounts")</li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
