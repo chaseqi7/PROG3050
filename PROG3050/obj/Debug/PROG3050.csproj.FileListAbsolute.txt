@@ -88,7 +88,6 @@ C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\Microsoft.AI.DependencyCollect
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\Microsoft.AI.Web.xml
-C:\Users\agalka1632\Desktop\PROG3050\PROG3050\obj\Debug\PROG3050.csprojResolveAssemblyReference.cache
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\obj\Debug\PROG3050.csproj.CoreCompileInputs.cache
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\obj\Debug\PROG3050.dll
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\obj\Debug\PROG3050.pdb

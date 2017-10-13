@@ -19,6 +19,9 @@
             Description
         </th>
         <th>
+            Genre
+        </th>
+        <th>
             Price
         </th>
         <th>
@@ -30,21 +33,24 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EnglishName)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EnglishDescription)
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
         </td>
         <td>
             $@Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ESRBRatingCode)
+            @Html.DisplayFor(modelItem => item.EsrbRating)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Guid }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Guid }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Guid })
+            @Html.ActionLink("Edit", "Edit", new { id = item.GameID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.GameID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.GameID })
         </td>
     </tr>
 }
