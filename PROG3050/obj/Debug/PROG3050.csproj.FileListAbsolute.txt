@@ -187,6 +187,9 @@ G:\PROG3050\PROG3050\bin\Microsoft.AI.DependencyCollector.xml
 G:\PROG3050\PROG3050\bin\Microsoft.AI.ServerTelemetryChannel.xml
 G:\PROG3050\PROG3050\bin\Microsoft.AI.WindowsServer.xml
 G:\PROG3050\PROG3050\bin\Microsoft.AI.Web.xml
+<<<<<<< HEAD
+>>>>>>> parent of c679d47... Merge branch 'master' of https://github.com/chaseqi7/PROG3050
+=======
 >>>>>>> parent of c679d47... Merge branch 'master' of https://github.com/chaseqi7/PROG3050
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\ApplicationInsights.config
 C:\Users\agalka1632\Desktop\PROG3050\PROG3050\bin\roslyn\csc.exe
