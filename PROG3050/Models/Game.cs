@@ -16,6 +16,8 @@ namespace PROG3050.Models
         public string Publisher { get; set; }
         public string Genre { get; set; }
         public string EsrbRating { get; set; }
+
+        [Range(typeof(decimal), "0", "400.00")  ]
         public decimal Price { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
