@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PROG3050.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            ESRB Rating
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnglishName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnglishDescription)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESRBRatingCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Guid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Guid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Guid })
+        </td>
+    </tr>
+}
+
+</table>

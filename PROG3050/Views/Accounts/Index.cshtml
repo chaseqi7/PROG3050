@@ -1,0 +1,108 @@
+﻿@model IEnumerable<PROG3050.Models.Account>
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="panel panel-success login-prompt">
+        <div class="panel-heading">
+            <h4>Welcome!</h4>
+        </div>
+        <div class="panel-body">
+            <p class="text-muted"><small>Please sign in below ...</small></p>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Username">
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-success pull-right" type="button" onclick="location.href='@Url.Action("click_Login", "Accounts")'">Log in</button>
+                <div class="clearfix"></div>
+                <button class="btn btn-default pull-right" type="button">Sign up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+
+<!--
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateProvince)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Registered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateProvince)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
+    -->
