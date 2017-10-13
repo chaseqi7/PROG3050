@@ -15,6 +15,15 @@ namespace PROG3050.Controllers
     {
         private CVGSContext db = new CVGSContext();
 
+        //Quick & easy permission validator
+        private Boolean ValidateUserGroup(int perms)
+        {
+            if(Session["Permissions"] != null && (int)Session["Permissions"] >= perms){
+                return true;
+            }
+            return false;
+        }
+
         // GET: Events
         public ActionResult Index()
         {
@@ -39,6 +48,9 @@ namespace PROG3050.Controllers
         // GET: Events/Create
         public ActionResult Create()
         {
+            if(!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
@@ -49,6 +61,9 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EventID,Name,Description,StartDate,EndDate,Country,Stateprovince,City,Address")] Event @event)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             if (ModelState.IsValid)
             {
                 db.Events.Add(@event);
@@ -62,6 +77,9 @@ namespace PROG3050.Controllers
         // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +99,9 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EventID,Name,Description,StartDate,EndDate,Country,Stateprovince,City,Address")] Event @event)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             if (ModelState.IsValid)
             {
                 db.Entry(@event).State = EntityState.Modified;
@@ -93,6 +114,9 @@ namespace PROG3050.Controllers
         // GET: Events/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,6 +134,9 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
+
             Event @event = db.Events.Find(id);
             db.Events.Remove(@event);
             db.SaveChanges();

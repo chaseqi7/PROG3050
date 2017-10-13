@@ -11,10 +11,19 @@ using PROG3050.Models;
 
 namespace PROG3050.Controllers
 {
+
     public class GamesController : Controller
     {
         private CVGSContext db = new CVGSContext();
-
+        //Quick & easy permission validator
+        private Boolean ValidateUserGroup(int perms)
+        {
+            if (Session["Permissions"] != null && (int)Session["Permissions"] >= perms)
+            {
+                return true;
+            }
+            return false;
+        }
         // GET: Games
         public ActionResult Index()
         {
@@ -40,6 +49,8 @@ namespace PROG3050.Controllers
         // GET: Games/Create
         public ActionResult Create()
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -50,6 +61,8 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GameID,Title,Description,Platform,Developer,Publisher,Genre,EsrbRating,Price,PublishDate")] Game game)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 db.Games.Add(game);
@@ -63,6 +76,8 @@ namespace PROG3050.Controllers
         // GET: Games/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,7 +97,8 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "GameID,Title,Platform,Description,Developer,Publisher,Genre,EsrbRating,Price,PublishDate")] Game game)
         {
-
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 db.Entry(game).State = EntityState.Modified;
@@ -95,6 +111,8 @@ namespace PROG3050.Controllers
         // GET: Games/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -112,6 +130,8 @@ namespace PROG3050.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (!ValidateUserGroup(2))
+                return RedirectToAction("Index", "Home");
             Game game = db.Games.Find(id);
             db.Games.Remove(game);
             db.SaveChanges();
