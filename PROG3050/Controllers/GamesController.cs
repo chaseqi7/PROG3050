@@ -14,7 +14,6 @@ namespace PROG3050.Controllers
     public class GamesController : Controller
     {
         private CVGSContext db = new CVGSContext();
-        Random r = new Random();
 
         // GET: Games
         public ActionResult Index()
@@ -23,7 +22,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -34,7 +33,6 @@ namespace PROG3050.Controllers
             {
                 return HttpNotFound();
             }
-            game.GameGenre = db.GameCategory.Find(game.GameCategoryId);
             return View(game);
         }
 
@@ -50,27 +48,10 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Guid,EnglishName,EnglishDescription,EnglishDetail")] Game game)
+        public ActionResult Create([Bind(Include = "GameID,Title,Description,Platform,Developer,Publisher,Genre,EsrbRating,Price,PublishDate")] Game game)
         {
             if (ModelState.IsValid)
             {
-                Guid temp;
-                while (true)
-                {
-                    temp = Guid.NewGuid();
-                    if (db.Games.Find(temp) == null)
-                    {
-                        game.Guid = temp;
-                        break;
-                    }
-                }
-
-                game.UserName = "Unknown";
-                game.FrenchName = "fr";
-                game.FrenchVersion = false;
-                game.EsrbRatingCode = "E";
-                game.GameStatusCode = "A";
-                game.GameCategoryId = 1;
                 db.Games.Add(game);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -80,7 +61,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -99,8 +80,9 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Guid,EnglishName,EnglishDescription,EnglishDetail")] Game game)
+        public ActionResult Edit([Bind(Include = "GameID,Title,Platform,Description,Developer,Publisher,Genre,EsrbRating,Price,PublishDate")] Game game)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(game).State = EntityState.Modified;
@@ -111,7 +93,7 @@ namespace PROG3050.Controllers
         }
 
         // GET: Games/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -128,7 +110,7 @@ namespace PROG3050.Controllers
         // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Game game = db.Games.Find(id);
             db.Games.Remove(game);

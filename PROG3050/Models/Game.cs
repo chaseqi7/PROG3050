@@ -8,27 +8,20 @@ namespace PROG3050.Models
 {
     public class Game
     {
-        [Key]
-        public Guid Guid { get; set; }
-
-        public string EnglishName { get; set; }
-        public string FrenchName { get; set; }
-        public string GameStatusCode { get; set; }
-        public int GameCategoryId { get; set; }
-        public string ESRBRatingCode { get; set; }
-        public Boolean FrenchVersion { get; set; }
-        public string EsrbRatingCode { get; set; }
-        public string UserName { get; set; }
-        public string EnglishDescription { get; set; }
-        public string EnglishDetail { get; set; }
+        public int GameID { get; set; }
+        public string Title { get; set; }
         public string Platform { get; set; }
-        public GameCategory GameGenre { get; set; }
+        public string Description { get; set; }
         public string Developer { get; set; }
         public string Publisher { get; set; }
+        public string Genre { get; set; }
+        public string EsrbRating { get; set; }
+
+        [Range(typeof(decimal), "0", "400.00")  ]
         public decimal Price { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime PublishDate { get; set; }
-
-
 
     }
 }
