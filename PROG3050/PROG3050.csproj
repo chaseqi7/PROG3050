@@ -162,6 +162,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Usergroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

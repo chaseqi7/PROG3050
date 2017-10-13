@@ -10,7 +10,7 @@ namespace PROG3050.Models
     {
         [Key]
         public string AccountName { get; set; }
-        public string UserType { get; set; }
+        public string Usergroup { get; set; }
         public string UPassword { get; set; }
         public DateTime Registered { get; set; }
         public string Email { get; set; }

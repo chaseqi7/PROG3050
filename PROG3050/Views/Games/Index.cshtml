@@ -7,9 +7,12 @@
 
 <h2>Games</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -48,9 +51,14 @@
             @Html.DisplayFor(modelItem => item.EsrbRating)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.GameID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.GameID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.GameID })
+            @Html.ActionLink("Details", "Details", new { id = item.GameID })
+            @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2)
+            {
+                <span> | </span>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GameID })
+                <span> | </span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.GameID })
+            }
         </td>
     </tr>
 }

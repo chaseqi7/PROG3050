@@ -7,9 +7,11 @@
 
 <h2>Events</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2){
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -66,9 +68,14 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
+
+            @Html.ActionLink("Details", "Details", new { id = item.EventID })
+            @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2){
+                <span> | </span>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EventID })
+                <span> | </span>
+                @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
+            }
         </td>
     </tr>
 }

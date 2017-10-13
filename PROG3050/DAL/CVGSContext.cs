@@ -15,13 +15,13 @@ namespace PROG3050.DAL
         {
         }
 
+        public DbSet<Usergroup> Usergroup { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Event> Events { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
     }
-
-        public System.Data.Entity.DbSet<PROG3050.Models.Account> Accounts { get; set; }
     }
 }

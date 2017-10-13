@@ -23,7 +23,9 @@ namespace PROG3050.Controllers
             {
                 // Valid user! Save their junk!
                 Session["User"] = username;
-                Session["Usergroup"] = cred_query.First().UserType;
+                var usergroup = cred_query.First().Usergroup;
+                Session["Usergroup"] = usergroup;
+                Session["Permissions"] = db.Usergroup.Where(i => i.Title == usergroup).First().GroupPermissions;
                 return RedirectToAction("Index", "Home");
             }
             TempData["UserMessage"] = "INVALID";
@@ -45,12 +47,12 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp([Bind(Include = "AccountName,UserType,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        public ActionResult SignUp([Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
         {
             if (ModelState.IsValid)
             {
 
-                account.UserType = "MEMBER";
+                account.Usergroup = "MEMBER";
                 account.Registered = DateTime.Now;
                 db.Accounts.Add(account);
                 db.SaveChanges();
@@ -116,7 +118,7 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountName,UserType,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        public ActionResult Edit([Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
         {
             if (ModelState.IsValid)
             {
