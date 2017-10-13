@@ -1,89 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PROG3050.DAL;
+using PROG3050.Models;
 
 namespace PROG3050.Controllers
 {
     public class ReportsController : Controller
     {
+        private CVGSContext db = new CVGSContext();
         // GET: Reports
         public ActionResult Index()
         {
             return View();
         }
-
-        // GET: Reports/Details/5
-        public ActionResult Details(int id)
+        
+        public ActionResult GameList()
         {
-            return View();
+            return View(db.Games.ToList());
         }
 
-        // GET: Reports/Create
-        public ActionResult Create()
+        public ActionResult NewGameList()
         {
-            return View();
+            return View(db.Games.ToList());
         }
 
-        // POST: Reports/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult MemberList()
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(db.Accounts.ToList());
+        }
+        public ActionResult NewMemberList()
+        {
+            return View(db.Accounts.ToList());
         }
 
-        // GET: Reports/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult UpcomingEventList()
         {
-            return View();
+            return View(db.Events.ToList());
         }
 
-        // POST: Reports/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Reports/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Reports/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

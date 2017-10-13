@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PROG3050.Models.Game>
+
+@{
+    ViewBag.Title = "Game List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Game Listing</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("More", "Details" ,"Games", new { id = item.GameID }, null)
+            </td>
+        </tr>
+    }
+
+</table>

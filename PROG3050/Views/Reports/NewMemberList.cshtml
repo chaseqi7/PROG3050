@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PROG3050.Models.Account>
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Members (This Week)</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usergroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registered)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Registered.AddDays(7) <= DateTime.Now){
+            continue;
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usergroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registered)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -28,7 +28,6 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
-                    
                     @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2){
                        <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
                     }

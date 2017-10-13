@@ -221,6 +221,11 @@
     <Content Include="Views\Games\Details.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Reports\GameList.cshtml" />
+    <Content Include="Views\Reports\UpcomingEventList.cshtml" />
+    <Content Include="Views\Reports\NewGameList.cshtml" />
+    <Content Include="Views\Reports\MemberList.cshtml" />
+    <Content Include="Views\Reports\NewMemberList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
