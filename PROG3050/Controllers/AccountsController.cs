@@ -20,6 +20,11 @@ namespace PROG3050.Controllers
             return "Nice ... ";
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         // GET: Accounts
         public ActionResult Index()
         {
