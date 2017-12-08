@@ -13,6 +13,14 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 }
+<div class="pull-right">
+    @using (Html.BeginForm("Index", "Games", FormMethod.Get))
+    {
+        @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
+</div>
+
+
 <table class="table">
     <tr>
         <th>

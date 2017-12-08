@@ -154,6 +154,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="DAL\CVGSContext.cs" />
     <Compile Include="Global.asax.cs">
