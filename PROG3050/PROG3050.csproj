@@ -215,9 +215,7 @@
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Accounts\SignUp.cshtml" />
     <Content Include="Views\Accounts\Delete.cshtml" />
-    <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
-    <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\Games\Details.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
@@ -227,6 +225,7 @@
     <Content Include="Views\Reports\MemberList.cshtml" />
     <Content Include="Views\Reports\NewMemberList.cshtml" />
     <Content Include="Views\Accounts\UserProfile.cshtml" />
+    <Content Include="Views\Accounts\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
