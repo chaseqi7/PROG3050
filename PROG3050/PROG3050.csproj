@@ -163,7 +163,6 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\SecurityQuestion.cs" />
     <Compile Include="Models\Usergroup.cs" />

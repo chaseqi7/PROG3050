@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using PROG3050.DAL;
 using PROG3050.Models;
-using System.Data.SqlClient;
 
 namespace PROG3050.Controllers
 {
@@ -112,10 +111,6 @@ namespace PROG3050.Controllers
             {
                 return HttpNotFound();
             }
-            else if (Session["User"] != null)
-            {
-                List<string> f = getFriendList(Session["User"].ToString());
-            }
             return View(user);
         }
 
@@ -177,28 +172,5 @@ namespace PROG3050.Controllers
             return View(account);
         }
 
-        public List<string> getFriendList(string AccountName)
-        {
-            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
-
-            cmd.CommandText = "SELECT FriendedAccountName FROM Friend where AccountName='" + AccountName + "'";
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = conn;
-
-            conn.Open();
-
-            reader = cmd.ExecuteReader();
-
-            List<string> AccountNamesList = new List<string>();
-            if (reader.Read())
-            {
-                AccountNamesList.Add(reader.GetValue(0).ToString());
-            }
-
-        }
     }
-
 }
-
