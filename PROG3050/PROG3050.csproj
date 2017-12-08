@@ -235,6 +235,7 @@
     <Content Include="Views\SecurityQuestions\Edit.cshtml" />
     <Content Include="Views\SecurityQuestions\Index.cshtml" />
     <Content Include="Views\Accounts\ForgotPassword.cshtml" />
+    <Content Include="Views\Accounts\ForgotPassword_Questions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
