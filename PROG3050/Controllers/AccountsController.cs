@@ -161,6 +161,66 @@ namespace PROG3050.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(string account)
+        {
+            if (db.Accounts.Find(account) == null)
+            {
+                ViewBag.AccountError = "No account by name '" + account + "' found.";
+                return View();
+            }
+            return RedirectToAction("ForgotPassword_Questions", "Accounts", new { account = account });
+        }
+        public ActionResult ForgotPassword_Questions(string account)
+        {
+            ViewBag.Account = account;
+            return View(db.SecurityQuestions.ToList());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword_Questions(FormCollection form)
+        {
+            string account = form["account"];
+            var securityQuestions = db.SecurityQuestions.ToList();
+            var pass = true;
+            var chunk_test = "";
+
+            foreach (var sq in securityQuestions)
+            {
+                if(sq.AccountName == account)
+                {
+                    if(form["Answer_" + sq.Question] != sq.Answer)
+                        pass = false;
+
+                }
+                chunk_test += sq.AccountName + " : " + account + " : Answer_" + sq.Question + " : " + sq.Answer + "\n";
+            }
+            if (!pass)
+            {
+                TempData["ErrorMessage"] = "Security questions are incorrect.";
+            }
+            else
+            {
+                if((form["newPassword"] != null && form["confirmPassword"] != null) && (form["newPassword"] != "" && form["confirmPassword"] != ""))
+                {
+                    if(form["newPassword"] == form["confirmPassword"])
+                    {
+                        Account pass_swap = db.Accounts.Find(account);
+                        pass_swap.UPassword = form["newPassword"];
+                        db.SaveChanges();
+                        TempData["SuccessMessage"] = "Your password has been reset!";
+                    }
+                    else
+                        TempData["ErrorMessage"] = "Passwords did not match.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "You must provide a new password.";
+                }
+            }
+            return RedirectToAction("Index", "Home", null);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(string confirmPassword, [Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
         {
             if (account.UPassword == confirmPassword && ModelState.IsValid)

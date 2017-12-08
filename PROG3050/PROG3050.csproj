@@ -239,6 +239,7 @@
     <Content Include="Views\Accounts\ForgotPassword.cshtml" />
     <Content Include="Views\Friends\Delete.cshtml" />
     <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Accounts\ForgotPassword_Questions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

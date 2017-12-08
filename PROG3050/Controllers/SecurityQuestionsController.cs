@@ -21,21 +21,6 @@ namespace PROG3050.Controllers
             return View(db.SecurityQuestions.ToList());
         }
 
-        // GET: SecurityQuestions/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SecurityQuestion securityQuestion = db.SecurityQuestions.Find(id);
-            if (securityQuestion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(securityQuestion);
-        }
-
         // GET: SecurityQuestions/Create
         public ActionResult Create()
         {
