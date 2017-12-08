@@ -95,7 +95,7 @@ namespace PROG3050.Controllers
             }
             else if(Session["User"]!=null)
             {
-                List<string> f=getFriendList(Session["User"].ToString());
+                Session["FriendList"] = getFriendList(Session["User"].ToString());
             }
             return View(user);
         }
