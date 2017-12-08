@@ -25,9 +25,18 @@ namespace PROG3050.Controllers
             return false;
         }
         // GET: Games
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(db.Games.ToList());
+            var games = from g in db.Games
+                         select g;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                games = games.Where(s => s.Title.Contains(search));
+            }
+
+            return View(games);
+            
         }
 
         // GET: Games/Details/5
@@ -146,6 +155,8 @@ namespace PROG3050.Controllers
             }
             base.Dispose(disposing);
         }
+
+
         
     }
 }
