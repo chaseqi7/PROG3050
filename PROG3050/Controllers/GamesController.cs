@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PROG3050.DAL;
 using PROG3050.Models;
+using System.Data.SqlClient;
 
 namespace PROG3050.Controllers
 {
@@ -41,6 +42,11 @@ namespace PROG3050.Controllers
             if (game == null)
             {
                 return HttpNotFound();
+            }
+            else if (Session["User"]!=null)
+            {
+                string user = Session["User"].ToString();
+                ViewBag.GameOwnership = getGameOwnership(user, game.GameID)==true ? "You already own this game" : "";
             }
             return View(game);
         }
@@ -146,6 +152,28 @@ namespace PROG3050.Controllers
             }
             base.Dispose(disposing);
         }
-        
+
+        public bool getGameOwnership(string AccountName, int GameID)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "SELECT TransactionId FROM PaymentTransaction join PaymentInfo on PaymentTransaction.PaymentInfoId=PaymentInfo.PaymentInfoId where GameId=" + GameID + " and AccountName='" + AccountName+"'";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            reader = cmd.ExecuteReader();
+            
+            if (reader.Read())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
