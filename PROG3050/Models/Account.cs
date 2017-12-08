@@ -12,6 +12,8 @@ namespace PROG3050.Models
         public string AccountName { get; set; }
         public string Usergroup { get; set; }
         public string UPassword { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Registered { get; set; }
         public string Email { get; set; }
         public string Country { get; set; }

@@ -90,5 +90,58 @@ namespace PROG3050.Controllers
             return View(user);
         }
 
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("UserProfile");
+            }
+            return View(account);
+        }
+
+        public ActionResult ChangePassword()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Account user = db.Accounts.Find(Session["User"]);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(string confirmPassword, [Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        {
+            if (account.UPassword == confirmPassword && ModelState.IsValid)
+            {
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("UserProfile");
+            }
+            return View(account);
+        }
+
     }
 }
