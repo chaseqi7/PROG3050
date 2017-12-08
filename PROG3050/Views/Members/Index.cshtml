@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PROG3050.Models.Account>
+
+@{
+    ViewBag.Title = "Members";
+}
+
+<h2>Members</h2>
+
+<div class="pull-right">
+    @using (Html.BeginForm("Index", "Members", FormMethod.Get))
+    {
+        @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usergroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registered)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usergroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registered)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Account", new { AccountName = item.AccountName },null)
+            </td>
+        </tr>
+   
+    }
+
+</table>
