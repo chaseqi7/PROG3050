@@ -20,6 +20,5 @@ namespace PROG3050.Models
         public string StateProvince { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        
     }
 }
