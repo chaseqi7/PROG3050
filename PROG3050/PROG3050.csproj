@@ -227,6 +227,7 @@
     <Content Include="Views\Reports\NewMemberList.cshtml" />
     <Content Include="Views\Accounts\UserProfile.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
