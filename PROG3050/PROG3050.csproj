@@ -154,6 +154,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="DAL\CVGSContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,6 +228,7 @@
     <Content Include="Views\Reports\MemberList.cshtml" />
     <Content Include="Views\Reports\NewMemberList.cshtml" />
     <Content Include="Views\Accounts\UserProfile.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
