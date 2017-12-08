@@ -12,8 +12,9 @@
         <div class="container">
             <span class="banner">Conestoga Virtual Game Store <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></span>
             <br />
-            @if (Session["User"] != null){
-                <h4 class="pull-right text-success">Hello, @Session["User"]!</h4>
+            @if (Session["User"] != null)
+            {
+                <h4 class="pull-right text-success base-link">@Html.ActionLink("Hello, " + @Session["User"] + "!", "UserProfile", "Accounts")</h4>
                 <div class="clearfix"></div>
             }
             <div class="navbar-header">

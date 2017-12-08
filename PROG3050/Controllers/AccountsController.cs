@@ -75,5 +75,20 @@ namespace PROG3050.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult UserProfile()
+        {
+            if (Session["User"] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account user = db.Accounts.Find(Session["User"]);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
     }
 }

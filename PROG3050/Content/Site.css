@@ -40,3 +40,16 @@ textarea {
 .btn, input {
     margin-bottom: 5px;
 }
+
+.base-link > a {
+    color: #187a65;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.base-link > a:hover {
+    padding-right:10px;
+}
+
+.navbar-nav > li > a {
+    transition: 0.25s;
+}

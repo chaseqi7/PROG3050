@@ -226,6 +226,7 @@
     <Content Include="Views\Reports\NewGameList.cshtml" />
     <Content Include="Views\Reports\MemberList.cshtml" />
     <Content Include="Views\Reports\NewMemberList.cshtml" />
+    <Content Include="Views\Accounts\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
