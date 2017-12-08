@@ -197,6 +197,7 @@ namespace PROG3050.Controllers
                 AccountNamesList.Add(reader.GetValue(0).ToString());
             }
 
+            return AccountNamesList;
         }
     }
 
