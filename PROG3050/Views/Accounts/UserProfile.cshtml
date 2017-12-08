@@ -12,7 +12,8 @@
 
 @if ((Session["Permissions"] != null && (int)Session["Permissions"] >= 2) || ((string)Session["User"] == Model.AccountName))
 {
-<span class="base-link pull-right">@Html.ActionLink("Edit Profile", "Edit", new { id = Model.AccountName })</span>
+<span class="base-link pull-right">@Html.ActionLink("Edit Profile", "Edit", new { id = Model.AccountName })</span><br />
+<span class="base-link pull-right">@Html.ActionLink("Security Questions", "Index", "SecurityQuestions", new { id = Model.AccountName }, null)</span>
 }
 
 <hr />

@@ -47,21 +47,40 @@ namespace PROG3050.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp([Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
+        public ActionResult SignUp(string Question, string Answer, [Bind(Include = "AccountName,Usergroup,UPassword,Registered,Email,Country,StateProvince,City,Address")] Account account)
         {
+            if ((Question == null || Question == "") || (Answer == null || Answer == ""))
+            {
+                ViewBag.SecQError = "Security question & answer are required.";
+                return View(account);
+            }
+            if(db.Accounts.Find(account.AccountName) != null)
+            {
+                ViewBag.AccountExistsError = "That account name already exists.";
+                return View(account);
+            }
             if (ModelState.IsValid)
             {
-
                 account.Usergroup = "MEMBER";
                 account.Registered = DateTime.Now;
                 db.Accounts.Add(account);
                 db.SaveChanges();
+                SaveSecurityQuestion(account.AccountName, Question, Answer);
                 return RedirectToAction("Login");
             }
 
             return View(account);
         }
+        public void SaveSecurityQuestion(string account, string question, string answer)
+        {
+            SecurityQuestion secQ = new SecurityQuestion();
+            secQ.AccountName = account;
+            secQ.Question = question;
+            secQ.Answer = answer;
 
+            db.SecurityQuestions.Add(secQ);
+            db.SaveChanges();
+        }
         public ActionResult Login()
         {
             // Error Messages. A lil sloppy, but eh!
@@ -135,6 +154,10 @@ namespace PROG3050.Controllers
                 return HttpNotFound();
             }
             return View(user);
+        }
+        public ActionResult ForgotPassword()
+        {
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

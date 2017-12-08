@@ -16,6 +16,7 @@
         <h5>Please fill in your information!</h5>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="field-validation-valid text-danger">@ViewBag.AccountExistsError</div><br />
         <div class="form-group">
             <span class="control-label col-md-2">Username</span>
             <div class="col-md-10">
@@ -71,7 +72,22 @@
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
             </div>
         </div>
+        <hr />
+        <div class="field-validation-valid text-danger">@ViewBag.SecQError</div><br />
+        <div class="form-group">
+            <span class="control-label col-md-2">Security Question</span>
+            <div class="col-md-10">
+                <input value="What is your mother's maiden name?" class="form-control text-box single-line" id="Question" name="Question" type="text">
+            </div>
+        </div>
 
+        <div class="form-group">
+            <span class="control-label col-md-2">Answer</span>
+            <div class="col-md-10">
+                <input value="Billybob" class="form-control text-box single-line" id="Answer" name="Answer" type="text">
+            </div>
+        </div>
+        <hr />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Sign Up" class="btn btn-success" />
