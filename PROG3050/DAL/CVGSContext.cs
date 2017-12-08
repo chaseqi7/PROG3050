@@ -20,5 +20,7 @@ namespace PROG3050.DAL
     {
         modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
     }
+
+        public System.Data.Entity.DbSet<PROG3050.Models.Friend> Friends { get; set; }
     }
 }

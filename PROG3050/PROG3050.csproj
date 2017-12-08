@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
@@ -163,6 +164,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\SecurityQuestion.cs" />
     <Compile Include="Models\Usergroup.cs" />
@@ -235,6 +237,8 @@
     <Content Include="Views\SecurityQuestions\Edit.cshtml" />
     <Content Include="Views\SecurityQuestions\Index.cshtml" />
     <Content Include="Views\Accounts\ForgotPassword.cshtml" />
+    <Content Include="Views\Friends\Delete.cshtml" />
+    <Content Include="Views\Friends\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -30,8 +30,13 @@
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
                     <li>@Html.ActionLink("Events", "Index", "Events")</li>
                     <li>@Html.ActionLink("Members", "Index", "Members")</li>
-                    @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2){
-                       <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                    @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2)
+                    {
+                        <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                    }
+                    @if (Session["User"] != null)
+                    {
+                        <li>@Html.ActionLink("Friends", "Index", "Friends")</li>
                     }
                 </ul>
                 @if (Session["User"] == null)

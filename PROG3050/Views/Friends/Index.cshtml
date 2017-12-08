@@ -1,0 +1,19 @@
+﻿@model IEnumerable<PROG3050.Models.Friend>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.FriendedAccountName)
+        </td>
+    </tr>
+}
+
+</table>
