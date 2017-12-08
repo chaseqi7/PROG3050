@@ -156,6 +156,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SecurityQuestionsController.cs" />
     <Compile Include="DAL\CVGSContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,6 +164,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\SecurityQuestion.cs" />
     <Compile Include="Models\Usergroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -228,6 +230,11 @@
     <Content Include="Views\Accounts\UserProfile.cshtml" />
     <Content Include="Views\Accounts\ChangePassword.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\SecurityQuestions\Create.cshtml" />
+    <Content Include="Views\SecurityQuestions\Delete.cshtml" />
+    <Content Include="Views\SecurityQuestions\Details.cshtml" />
+    <Content Include="Views\SecurityQuestions\Edit.cshtml" />
+    <Content Include="Views\SecurityQuestions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
