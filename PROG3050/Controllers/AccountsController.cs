@@ -76,13 +76,18 @@ namespace PROG3050.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult UserProfile()
+        public ActionResult UserProfile(string member)
         {
-            if (Session["User"] == null)
+            if (member == null && Session["User"] == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account user = db.Accounts.Find(Session["User"]);
+            Account user;
+            if (member != null)
+                user = db.Accounts.Find(member);
+            else
+                user = db.Accounts.Find(Session["User"]);
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -110,6 +115,7 @@ namespace PROG3050.Controllers
         {
             if (ModelState.IsValid)
             {
+                account.Usergroup = account.Usergroup.ToUpper();
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("UserProfile");

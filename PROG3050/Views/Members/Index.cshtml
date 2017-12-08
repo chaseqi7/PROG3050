@@ -16,13 +16,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Usergroup)
+            User Group
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AccountName)
+            Member
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Registered)
+            Date Registered
         </th>
         <th></th>
     </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Registered)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Account", new { AccountName = item.AccountName },null)
+                @Html.ActionLink("View Profile", "UserProfile", "Accounts", new { member = item.AccountName },null)
             </td>
         </tr>
    
