@@ -13,15 +13,19 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Profile</h4>
+        <div class="pull-right">
+            <span class="base-link pull-right">@Html.ActionLink("Change Password", "ChangePassword")</span><br />
+            <span class="base-link pull-right">@Html.ActionLink("Edit Payment Information", "Index", "PaymentInfo")</span>
+        </div>
+        <h4 class="pull-left">Profile</h4>
+
+        <div class="clearfix"></div>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         @Html.HiddenFor(model => model.AccountName)
         @Html.HiddenFor(model => model.UPassword)
         @Html.HiddenFor(model => model.Registered)
-
-        <span class="base-link pull-right">@Html.ActionLink("Change Password", "ChangePassword")</span>
 
 @if (Session["Permissions"] != null && (int)Session["Permissions"] >= 2)
 {

@@ -156,6 +156,7 @@
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\PaymentInfosController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SecurityQuestionsController.cs" />
     <Compile Include="DAL\CVGSContext.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\PaymentInfo.cs" />
     <Compile Include="Models\SecurityQuestion.cs" />
     <Compile Include="Models\Usergroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,6 +242,10 @@
     <Content Include="Views\Friends\Delete.cshtml" />
     <Content Include="Views\Friends\Index.cshtml" />
     <Content Include="Views\Accounts\ForgotPassword_Questions.cshtml" />
+    <Content Include="Views\PaymentInfo\Create.cshtml" />
+    <Content Include="Views\PaymentInfo\Delete.cshtml" />
+    <Content Include="Views\PaymentInfo\Edit.cshtml" />
+    <Content Include="Views\PaymentInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

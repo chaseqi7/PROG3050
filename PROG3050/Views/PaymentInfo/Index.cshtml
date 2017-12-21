@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PROG3050.Models.PaymentInfo>
+
+@{
+    ViewBag.Title = "Payment Information";
+}
+
+<h2>Your Cards</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpirationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CVC)
+        </td>
+        <td class="text-right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.PaymentInfoId }) |
+            @Html.ActionLink("Remove", "Delete", new { id=item.PaymentInfoId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<span class="base-link pull-right">@Html.ActionLink("Add Card", "Create")</span>
+<div class="clearfix"></div>
