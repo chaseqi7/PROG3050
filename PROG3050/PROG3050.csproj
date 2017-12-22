@@ -246,6 +246,7 @@
     <Content Include="Views\PaymentInfo\Delete.cshtml" />
     <Content Include="Views\PaymentInfo\Edit.cshtml" />
     <Content Include="Views\PaymentInfo\Index.cshtml" />
+    <Content Include="Views\Games\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

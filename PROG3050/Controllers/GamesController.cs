@@ -56,6 +56,7 @@ namespace PROG3050.Controllers
             {
                 string user = Session["User"].ToString();
                 ViewBag.GameOwnership = getGameOwnership(user, game.GameID)==true ? "You already own this game" : "";
+                ViewBag.GameInCart = IsGameInCart(user, game.GameID) == true ? "inCart" : "";
             }
             return View(game);
         }
@@ -183,6 +184,114 @@ namespace PROG3050.Controllers
 
             return false;
         }
+   
+        public bool IsGameInCart(string AccountName, int GameID)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "SELECT * FROM CartItems where AccountName='" + AccountName + "' and GameID=" +GameID;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public ActionResult AddGameToCart(int GameId) { 
+
+
+            string user = Session["User"].ToString();
+
+
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "INSERT INTO CartItems(AccountName,GameID) VALUES ('"+user+"',"+ GameId + ");";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            reader = cmd.ExecuteReader();
+            
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult RemoveGameFromCart(int GameId)
+        {
+
+
+            string user = Session["User"].ToString();
+
+
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "DELETE FROM CartItems WHERE AccountName='"+user+"' and GameId="+GameId;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            reader = cmd.ExecuteReader();
+
+            return RedirectToAction("Index");
+        }
+
         
+        public ActionResult Cart()
+        {
+
+            string user = Session["User"].ToString();
+
+
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            cmd.CommandText = "SELECT GameId FROM CartItems where AccountName='" + user + "';";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+
+
+            List<int> GameIDs = new List<int>();
+           
+            //STILL NEEDS TO BE FIXED
+            using (reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var myString = reader.GetString(0); 
+                }
+            }
+
+
+
+            var games = from g in db.Games
+                        select g;
+            
+                games = games.Where(s => s.Title.Contains(search));
+            
+
+            return View(games);
+
+
+
+
+            return View();
+        }
     }
 }

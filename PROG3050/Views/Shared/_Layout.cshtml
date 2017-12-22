@@ -14,6 +14,7 @@
             <br />
             @if (Session["User"] != null)
             {
+                <h4 class="pull-right text-success">&nbsp;&nbsp;&nbsp;@Html.ActionLink("Cart", "Cart", "Games")</h4>
                 <h4 class="pull-right text-success base-link">@Html.ActionLink("Hello, " + @Session["User"] + "!", "UserProfile", "Accounts")</h4>
                 <div class="clearfix"></div>
             }

@@ -11,6 +11,19 @@
 <div>
     <h4>@ViewBag.GameOwnership</h4>
     <hr />
+    
+    @if (Session["user"] != null && !Session["user"].Equals(""))
+    {
+        if (ViewBag.GameInCart == ("inCart"))
+        {
+            
+           @Html.ActionLink("Remove Game from Cart", "RemoveGameFromCart", new { GameId = Model.GameID })
+        }
+        else
+        {
+            @Html.ActionLink("Add Game to Cart", "AddGameToCart", new { GameId = Model.GameID });
+        }
+    }
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
