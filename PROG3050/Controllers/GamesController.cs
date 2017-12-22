@@ -229,11 +229,8 @@ namespace PROG3050.Controllers
 
         public ActionResult RemoveGameFromCart(int GameId)
         {
-
-
             string user = Session["User"].ToString();
-
-
+            
             SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
@@ -245,16 +242,14 @@ namespace PROG3050.Controllers
             conn.Open();
 
             reader = cmd.ExecuteReader();
-
+            
             return RedirectToAction("Index");
         }
 
         
         public ActionResult Cart()
         {
-
             string user = Session["User"].ToString();
-
 
             SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CVGS;Integrated Security=True");
             SqlCommand cmd = new SqlCommand();
@@ -269,29 +264,19 @@ namespace PROG3050.Controllers
 
             List<int> GameIDs = new List<int>();
            
-            //STILL NEEDS TO BE FIXED
             using (reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    var myString = reader.GetString(0); 
+                    var myString = reader.GetInt32(0);
+                    GameIDs.Add(myString);
                 }
             }
-
-
-
+            
             var games = from g in db.Games
                         select g;
-            
-                games = games.Where(s => s.Title.Contains(search));
-            
 
-            return View(games);
-
-
-
-
-            return View();
+            return View(games.Where(t => GameIDs.Contains(t.GameID)));            
         }
     }
 }

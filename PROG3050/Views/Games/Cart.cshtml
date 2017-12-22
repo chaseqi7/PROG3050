@@ -6,9 +6,6 @@
 
 <h2>Cart</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -24,19 +21,10 @@
             @Html.DisplayNameFor(model => model.Developer)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Publisher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.EsrbRating)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublishDate)
         </th>
         <th></th>
     </tr>
@@ -56,24 +44,13 @@
             @Html.DisplayFor(modelItem => item.Developer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.EsrbRating)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PublishDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
+            @Html.ActionLink("Remove Game from Cart", "RemoveGameFromCart", new { GameId = item.GameID})
         </td>
     </tr>
 }
